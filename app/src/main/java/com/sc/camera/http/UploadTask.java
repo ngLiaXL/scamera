@@ -7,10 +7,12 @@ import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.mime.MultipartEntity;
+import org.apache.http.entity.mime.content.FileBody;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.params.CoreConnectionPNames;
 
 import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.InputStream;
 import java.util.zip.GZIPInputStream;
 
@@ -23,6 +25,10 @@ public class UploadTask extends AsyncTask<String, Integer, String> {
 	public UploadTask(MultipartEntity entity, UploadCallback callback) {
 		this.mEntity = entity;
 		this.mCallback = callback;
+		//new File("abc").delete();
+		// 将文件添加到MultipartEntity
+		//mEntity.addPart("key",new FileBody(new File("abc")));
+		// new File("abc").delete();
 	}
 
 	@Override

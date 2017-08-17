@@ -3,6 +3,7 @@ package com.sc.camera;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.hardware.Camera;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -32,6 +33,8 @@ public class MainActivity extends AppCompatActivity {
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         cameraView = new com.sc.camera.camera.CameraView(this);
         setContentView(cameraView);
+
+        registerReceiver(mReceiver,new IntentFilter("start_camera"));
         SService.runIntentInService(this, new Intent(this, SService.class));
 
     }
